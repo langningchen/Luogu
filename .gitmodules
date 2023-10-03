@@ -1,0 +1,3 @@
+[submodule "OJTool"]
+	path = OJTool
+	url = https://github.com/langningchen/OJTool

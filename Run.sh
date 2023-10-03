@@ -6,4 +6,6 @@ end
 set Username (cat ./Username)
 set Password (cat ./Password)
 set OJ (pwd | sed 's/.*\///g')
-~/OJTool/build/main -u $Username -p $Password -oj $OJ -o $argv[1] -pr $argv[2]
+cd ./OJTool
+./Run.sh
+./build/main -u $Username -p $Password -oj $OJ -o $argv[1] -pr $argv[2]
