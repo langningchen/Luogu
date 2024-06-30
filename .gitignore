@@ -11,7 +11,7 @@ Tools/LockAndUnlock.cpp
 # Ingore generated and temp files
 LGR*
 .ipynb_checkpoints/
-build/
+Build/
 Debug/
 Release/
 **/*.tmp

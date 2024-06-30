@@ -1,20 +1,22 @@
 #include <bits/stdc++.h>
 using namespace std;
-const int MOD = 10007;
-const int N = 100005;
-int n, m, ans, a[N], b[N], s1[N][2], s2[N][2];
+typedef long long ll;
+const ll MOD = 10007;
+const ll N = 100005;
+ll n, m, ans, a[N], b[N], s1[N][2], s2[N][2];
 int main()
 {
+    freopen("P2671_2.in", "r", stdin);
     cin >> n >> m;
-    for (int i = 1; i <= n; i++)
+    for (ll i = 1; i <= n; i++)
         cin >> a[i];
-    for (int i = 1; i <= n; i++)
+    for (ll i = 1; i <= n; i++)
     {
         cin >> b[i];
-        s1[b[i]][i % 2]++;
+        s1[b[i]][i % 2] = (s1[b[i]][i % 2] + 1) % MOD;
         s2[b[i]][i % 2] = (s2[b[i]][i % 2] + a[i]) % MOD;
     }
-    for (int i = 1; i <= n; i++)
+    for (ll i = 1; i <= n; i++)
     {
         // ans += i * ((s2[b[i]][i % 2] - a[i]) + a[i] * (s1[b[i]][i % 2] - 1)) % MOD;
         // ans %= MOD;
