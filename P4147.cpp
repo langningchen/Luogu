@@ -3,13 +3,10 @@ using namespace std;
 const int N = 1005;
 int n, m, ans, h[N][N], l[N][N], r[N][N];
 char a[N][N];
-int main()
-{
+int main() {
     cin >> n >> m;
-    for (int i = 1; i <= n; i++)
-    {
-        for (int j = 1; j <= m; j++)
-        {
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= m; j++) {
             cin >> a[i][j];
             h[i][j] = 1;
             r[i][j] = l[i][j] = j;
@@ -22,12 +19,9 @@ int main()
                 r[i][j] = r[i][j + 1];
     }
     for (int i = 1; i <= n; i++)
-        for (int j = 1; j <= m; j++)
-        {
-            if (i > 1 && a[i][j] == 'F')
-            {
-                if (a[i - 1][j] == 'F')
-                {
+        for (int j = 1; j <= m; j++) {
+            if (i > 1 && a[i][j] == 'F') {
+                if (a[i - 1][j] == 'F') {
                     h[i][j] = h[i - 1][j] + 1;
                     if (l[i - 1][j] > l[i][j])
                         l[i][j] = l[i - 1][j];

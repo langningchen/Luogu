@@ -21,10 +21,10 @@ void Do() {
         for (vector<node>::iterator vit = to[MinIndex].begin(); vit != to[MinIndex].end(); vit++) {
             ans[vit->v] = min(ans[vit->v], ans[MinIndex] + vit->w);
         }
-	    for (int i = 0; i < n; i++) {
-	        cout << ans[i] << " ";
-	    }
-	    cout << endl;
+        for (int i = 0; i < n; i++) {
+            cout << ans[i] << " ";
+        }
+        cout << endl;
     }
 }
 int main() {

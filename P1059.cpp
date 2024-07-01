@@ -2,11 +2,9 @@
 using namespace std;
 int n;
 set<int> s;
-int main()
-{
+int main() {
     cin >> n;
-    for (int i = 0; i < n; i++)
-    {
+    for (int i = 0; i < n; i++) {
         int t = 0;
         cin >> t;
         s.insert(t);

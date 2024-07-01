@@ -2,12 +2,10 @@
 using namespace std;
 int n;
 map<string, int> M;
-int main()
-{
+int main() {
     cin >> n;
     getchar();
-    for (int i = 0; i < n; i++)
-    {
+    for (int i = 0; i < n; i++) {
         string s;
         getline(cin, s);
         M[s]++;

@@ -10,16 +10,13 @@ ld b(ll i) { return a(i) + L + 1; }
 ld X(ll i) { return b(i); }
 ld Y(ll i) { return f[i] + pow(b(i), 2); }
 ld Distance(ll i, ll j) { return (Y(i) - Y(j)) / (X(i) - X(j)); }
-int main()
-{
+int main() {
     scanf("%lld%lld", &n, &L);
-    for (ll i = 1; i <= n; i++)
-    {
+    for (ll i = 1; i <= n; i++) {
         scanf("%lf", &C[i]);
         C[i] += C[i - 1];
     }
-    for (ll i = 1; i <= n; i++)
-    {
+    for (ll i = 1; i <= n; i++) {
         while (Head < Tail && Distance(Queue[Head], Queue[Head + 1]) < 2 * a(i))
             Head++;
         f[i] = f[Queue[Head]] + pow(a(i) - b(Queue[Head]), 2);

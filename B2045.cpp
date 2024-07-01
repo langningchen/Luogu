@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 int n;
-int main()
-{
+int main() {
     cin >> n;
     if (n == 1 || n == 3 || n == 5)
         cout << "NO" << endl;

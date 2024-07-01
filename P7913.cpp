@@ -4,23 +4,19 @@
 #include <vector>
 using namespace std;
 typedef pair<int, int> pii;
-struct range
-{
+struct range {
     int x, y;
 } a[100005], b[100005];
 int res1[100005], res2[100005];
 int n;
 bool cmp(const range &a, const range &b) { return a.x < b.x; }
-void calc(range *t, int m, int *res)
-{
+void calc(range *t, int m, int *res) {
     priority_queue<pii, vector<pii>, greater<pii>> lq; // 等待离港航班队列
     priority_queue<int, vector<int>, greater<int>> wq; // 空闲廊桥队列
     for (int i = 1; i <= n; i++)
         wq.push(i);
-    for (int i = 1; i <= m; i++)
-    {
-        while (!lq.empty() && t[i].x >= lq.top().first)
-        {
+    for (int i = 1; i <= m; i++) {
+        while (!lq.empty() && t[i].x >= lq.top().first) {
             wq.push(lq.top().second);
             lq.pop();
         }
@@ -34,8 +30,7 @@ void calc(range *t, int m, int *res)
     for (int i = 1; i <= n; i++)
         res[i] += res[i - 1];
 }
-int main()
-{
+int main() {
     int m1, m2;
     cin >> n >> m1 >> m2;
     for (int i = 1; i <= m1; i++)
@@ -47,8 +42,7 @@ int main()
     calc(a, m1, res1);
     calc(b, m2, res2);
     int ans = 0;
-    for (int i = 0; i <= n; i++)
-    {
+    for (int i = 0; i <= n; i++) {
         ans = max(ans, res1[i] + res2[n - i]);
     }
     cout << ans << endl;

@@ -4,11 +4,9 @@ typedef long long ll;
 const int N = 20005;
 int n, dtop, ctop, a[N], b[N], f[N * 2], d[N * 2];
 ll ans, c[N * 2];
-int main()
-{
+int main() {
     cin >> n;
-    for (int i = 1; i <= n; i++)
-    {
+    for (int i = 1; i <= n; i++) {
         cin >> a[i] >> b[i];
         d[++dtop] = a[i];
         d[++dtop] = b[i];
@@ -17,8 +15,7 @@ int main()
     for (int i = 1; i <= dtop; i++)
         if (d[i] != d[i - 1] || i == 1)
             c[++ctop] = d[i];
-    for (int i = 1; i <= n; i++)
-    {
+    for (int i = 1; i <= n; i++) {
         int x = lower_bound(c + 1, c + ctop + 1, a[i]) - c;
         int y = lower_bound(c + 1, c + ctop + 1, b[i]) - c;
         for (int j = x; j < y; j++)

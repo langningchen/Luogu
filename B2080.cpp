@@ -2,8 +2,7 @@
 using namespace std;
 double ans, x;
 int n;
-int main()
-{
+int main() {
     cin >> x >> n;
     for (int i = 0; i <= n; i++)
         ans += pow(x, i);

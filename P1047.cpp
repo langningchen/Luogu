@@ -2,15 +2,12 @@
 using namespace std;
 const int N = 10005;
 int l, m, a[N], c;
-int main()
-{
+int main() {
     cin >> l >> m;
-    for (int i = 0; i < m; i++)
-    {
+    for (int i = 0; i < m; i++) {
         int u, v;
         cin >> u >> v;
-        for (int j = u; j <= v; j++)
-        {
+        for (int j = u; j <= v; j++) {
             a[j] = true;
         }
     }

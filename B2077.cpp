@@ -1,18 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
 int n;
-int main()
-{
+int main() {
     cin >> n;
-    while (n != 1)
-    {
-        if (n % 2)
-        {
+    while (n != 1) {
+        if (n % 2) {
             cout << n << "*3+1=";
             n = n * 3 + 1;
-        }
-        else
-        {
+        } else {
             cout << n << "/2=";
             n /= 2;
         }

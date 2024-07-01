@@ -2,8 +2,7 @@
 using namespace std;
 double x;
 int n;
-int main()
-{
+int main() {
     cin >> x >> n;
     for (int i = 0; i < n; i++)
         x = x * 1.001;

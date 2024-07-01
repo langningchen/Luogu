@@ -80,17 +80,14 @@ $\operatorname{Subtask} 6(30\%):$ 无特殊限制。
 using namespace std;
 const int N = 100005;
 int n, m, l[N], r[N], ans;
-int main()
-{
+int main() {
     cin >> n >> m;
-    for (int i = 0; i < n; i++)
-    {
+    for (int i = 0; i < n; i++) {
         cin >> l[i] >> r[i];
         if (r[i] < l[i])
             swap(l[i], r[i]);
     }
-    for (int i = 0; i < m; i++)
-    {
+    for (int i = 0; i < m; i++) {
         int ll, rr;
         cin >> ll >> rr;
         set<int> s;

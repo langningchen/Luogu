@@ -4,11 +4,9 @@ typedef long long ll;
 int n;
 ll t = 1;
 double e = 1;
-int main()
-{
+int main() {
     cin >> n;
-    for (int i = 1; i <= n; i++)
-    {
+    for (int i = 1; i <= n; i++) {
         t *= i;
         e += 1.0 / t;
     }

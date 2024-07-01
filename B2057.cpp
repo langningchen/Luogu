@@ -2,11 +2,9 @@
 using namespace std;
 typedef long long ll;
 ll n, ans;
-int main()
-{
+int main() {
     cin >> n;
-    for (int i = 0; i < n; i++)
-    {
+    for (int i = 0; i < n; i++) {
         ll t;
         cin >> t;
         ans = max(ans, t);

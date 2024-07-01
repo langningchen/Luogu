@@ -1,12 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 double ans1, ans2;
-int main()
-{
+int main() {
     cin >> ans2;
     ans1 = ans2;
-    for (int i = 0; i < 9; i++)
-    {
+    for (int i = 0; i < 9; i++) {
         ans1 += ans2;
         ans2 /= 2;
     }

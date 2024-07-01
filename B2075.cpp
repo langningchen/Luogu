@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 int a, b, ans = 1;
-int main()
-{
+int main() {
     cin >> a >> b;
     for (int i = 0; i < b; i++)
         ans = ans * a % 1000;

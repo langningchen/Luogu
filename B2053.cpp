@@ -1,11 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 double a, b, c, x1, x2;
-int main()
-{
+int main() {
     cin >> a >> b >> c;
-    if (b * b - 4 * a * c < 0)
-    {
+    if (b * b - 4 * a * c < 0) {
         cout << "No answer!" << endl;
         return 0;
     }

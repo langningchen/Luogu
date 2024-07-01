@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 int n;
-int main()
-{
+int main() {
     cin >> n;
     cout << n * (n + 1) / 2 << endl;
     return 0;

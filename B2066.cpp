@@ -2,11 +2,9 @@
 using namespace std;
 int n;
 double ans;
-int main()
-{
+int main() {
     cin >> n;
-    for (int i = 0; i < n; i++)
-    {
+    for (int i = 0; i < n; i++) {
         double a, b;
         int c;
         cin >> a >> b >> c;

@@ -2,8 +2,7 @@
 using namespace std;
 int n;
 double BikeTime, WalkTime;
-int main()
-{
+int main() {
     cin >> n;
     BikeTime = 50 + n / 3.0;
     WalkTime = n / 1.2;

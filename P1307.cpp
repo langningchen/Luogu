@@ -2,11 +2,9 @@
 using namespace std;
 string s;
 bool flag = false;
-int main()
-{
+int main() {
     cin >> s;
-    if (s[0] == '-')
-    {
+    if (s[0] == '-') {
         flag = true;
         s.erase(0, 1);
     }

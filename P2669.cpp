@@ -2,11 +2,9 @@
 using namespace std;
 typedef long long ll;
 ll k, ans, i = 1;
-int main()
-{
+int main() {
     cin >> k;
-    while (1)
-    {
+    while (1) {
         ans += min(i, k) * i;
         k -= i;
         i++;

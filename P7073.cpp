@@ -2,18 +2,15 @@
 using namespace std;
 typedef long long ll;
 const ll N = 100005;
-struct Node
-{
+struct Node {
     ll l, r, fa, id;
     char op;
     bool type, value;
 } que[N];
 ll m, n, q, id_i[N];
 stack<ll> s;
-bool calc(ll i)
-{
-    if (que[i].type == 1)
-    {
+bool calc(ll i) {
+    if (que[i].type == 1) {
         if (que[i].op == '|')
             return calc(que[i].l) | calc(que[i].r);
         if (que[i].op == '&')
@@ -23,20 +20,16 @@ bool calc(ll i)
     }
     return que[i].value;
 }
-int main()
-{
-    while (1)
-    {
+int main() {
+    while (1) {
         char c;
         c = getchar();
         if (c == '\n')
             break;
-        else if (c == 'x')
-        {
+        else if (c == 'x') {
             ll x = 0;
             c = getchar();
-            while (c >= '0' && c <= '9')
-            {
+            while (c >= '0' && c <= '9') {
                 x = x * 10 + c - '0';
                 c = getchar();
             }
@@ -44,29 +37,22 @@ int main()
             que[m].id = x;
             id_i[x] = m;
             m++;
-        }
-        else if (c == '|' || c == '&' || c == '!')
-        {
+        } else if (c == '|' || c == '&' || c == '!') {
             que[m].type = 1;
             que[m].op = c;
             m++;
         }
     }
-    for (ll i = 0; i < m; i++)
-    {
+    for (ll i = 0; i < m; i++) {
         if (que[i].type == 0)
             s.push(i);
-        else
-        {
-            if (que[i].op == '!')
-            {
+        else {
+            if (que[i].op == '!') {
                 que[s.top()].fa = i;
                 que[i].l = s.top();
                 s.pop();
                 s.push(i);
-            }
-            else
-            {
+            } else {
                 que[s.top()].fa = i;
                 que[i].r = s.top();
                 s.pop();
@@ -81,8 +67,7 @@ int main()
     for (ll i = 1; i <= n; i++)
         cin >> que[id_i[i]].value;
     cin >> q;
-    for (ll i = 0; i < q; i++)
-    {
+    for (ll i = 0; i < q; i++) {
         ll t;
         cin >> t;
         que[id_i[t]].value = !que[id_i[t]].value;

@@ -2,11 +2,9 @@
 using namespace std;
 int n, k;
 double s;
-int main()
-{
+int main() {
     cin >> k;
-    while (s <= k)
-    {
+    while (s <= k) {
         n++;
         s += 1.0 / n;
     }

@@ -2,8 +2,7 @@
 using namespace std;
 string m;
 int k;
-int main()
-{
+int main() {
     cin >> m >> k;
     for (size_t i = 0; i < m.size(); i++)
         if (m[i] == '3')

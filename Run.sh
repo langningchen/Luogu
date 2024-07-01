@@ -8,4 +8,4 @@ set Password (cat ./Password)
 set OJ (pwd | sed 's/.*\///g')
 cd ./OJTool
 ./Run.sh
-./Build/main -u $Username -p $Password -oj $OJ -o $argv[1] -pr $argv[2]
+gdb --args ./Build/main -u $Username -p $Password -oj $OJ -o $argv[1] -pr $argv[2]

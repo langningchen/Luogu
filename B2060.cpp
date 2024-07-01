@@ -2,8 +2,7 @@
 using namespace std;
 typedef long long ll;
 ll m, n, ans;
-int main()
-{
+int main() {
     cin >> m >> n;
     for (int i = m; i <= n; i++)
         if (i % 17 == 0)
