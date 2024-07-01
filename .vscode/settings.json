@@ -87,8 +87,5 @@
         "valarray": "cpp",
         "variant": "cpp"
     },
-    "cph.general.saveLocation": "/CPH",
-    "cSpell.words": [
-        "LUOGU"
-    ]
+    "cph.general.saveLocation": ""
 }
