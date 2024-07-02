@@ -2,12 +2,10 @@
 using namespace std;
 const int N = 10;
 int a[N], eat;
-int main()
-{
+int main() {
     for (int i = 0; i < 5; i++)
         cin >> a[i];
-    for (int i = 0; i < 5; i++)
-    {
+    for (int i = 0; i < 5; i++) {
         eat += a[i] % 3;
         a[i == 0 ? 4 : i - 1] += a[i] / 3;
         a[i == 4 ? 0 : i + 1] += a[i] / 3;

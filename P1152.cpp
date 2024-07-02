@@ -3,12 +3,10 @@ using namespace std;
 const int N = 1005;
 int n, Last;
 set<int> s;
-int main()
-{
+int main() {
     cin >> n;
     cin >> Last;
-    for (int i = 1; i < n; i++)
-    {
+    for (int i = 1; i < n; i++) {
         int Temp;
         cin >> Temp;
         s.insert(abs(Temp - Last));

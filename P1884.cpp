@@ -5,12 +5,10 @@ const int N = 4005;
 const int INF = 0x7FFFFFFF;
 int n, btop, ctop, a[N][3], b[N], c[N], f[N][N];
 map<int, int> Map;
-int main()
-{
+int main() {
     cin >> n;
     for (int i = 1; i <= n; i++)
-        for (int j = 0; j < 4; j++)
-        {
+        for (int j = 0; j < 4; j++) {
             cin >> a[i][j];
             b[++btop] = a[i][j];
         }
@@ -20,8 +18,7 @@ int main()
         for (int j = 0; j < 4; j++)
             a[i][j] = Map[a[i][j]];
     for (int k = 1; k <= n; k++)
-        for (int i = a[k][0]; i < a[k][2]; i++)
-        {
+        for (int i = a[k][0]; i < a[k][2]; i++) {
             f[i][a[k][3]]++;
             f[i][a[k][1]]--;
         }

@@ -8,8 +8,7 @@ const string Name[7] = {"Sunday",
                         "Friday",
                         "Saturday"};
 int a, b, ans = 1;
-int main()
-{
+int main() {
     cin >> a >> b;
     a %= 7;
     for (int i = 0; i < b; i++)

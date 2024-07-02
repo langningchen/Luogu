@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 char c;
-int main()
-{
+int main() {
     cin >> c;
     cout << "  " << c << endl;
     cout << " " << c << c << c << endl;

@@ -3,14 +3,11 @@ using namespace std;
 typedef long long ll;
 int l, r;
 ll Counter;
-int main()
-{
+int main() {
     cin >> l >> r;
-    for (int i = l; i <= r; i++)
-    {
+    for (int i = l; i <= r; i++) {
         int t = i;
-        while (t)
-        {
+        while (t) {
             if (t % 10 == 2)
                 Counter++;
             t /= 10;

@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 double x;
-int main()
-{
+int main() {
     cin >> x;
     if (x < 5)
         cout << fixed << setprecision(3) << -x + 2.5 << endl;

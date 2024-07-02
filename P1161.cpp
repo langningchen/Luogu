@@ -2,11 +2,9 @@
 using namespace std;
 const int N = 2000005;
 int Open[N], n;
-int main()
-{
+int main() {
     cin >> n;
-    for (int i = 0; i < n; i++)
-    {
+    for (int i = 0; i < n; i++) {
         double a;
         int t;
         cin >> a >> t;
@@ -14,10 +12,8 @@ int main()
             Open[(int)floor(a * j)] ^= 1;
     }
     int i = 1;
-    while (1)
-    {
-        if (Open[i])
-        {
+    while (1) {
+        if (Open[i]) {
             cout << i << endl;
             break;
         }

@@ -4,16 +4,13 @@ typedef long long ll;
 typedef long double ld;
 ll k, n, e, d;
 ld p, q;
-int main()
-{
+int main() {
     cin >> k;
-    for (int i = 0; i < k; i++)
-    {
+    for (int i = 0; i < k; i++) {
         cin >> n >> e >> d;
         p = (n + 2 - e * d - (ll)sqrt((e * d - n - 2) * (e * d - n - 2) - 4 * n)) / 2.0;
         q = n / p;
-        if (p != (int)p || q != (int)q || p == 0 || q == 0 || p * q != n || (p - 1) * (q - 1) + 1 != e * d)
-        {
+        if (p != (int)p || q != (int)q || p == 0 || q == 0 || p * q != n || (p - 1) * (q - 1) + 1 != e * d) {
             cout << "NO" << endl;
             continue;
         }

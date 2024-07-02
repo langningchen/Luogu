@@ -2,8 +2,7 @@
 using namespace std;
 stack<int> NumberStack;
 stack<char> OperatorStack;
-struct Node
-{
+struct Node {
     int Father;
     int Value;
     int LeftChild;
@@ -11,16 +10,13 @@ struct Node
 } List[100000];
 int ListSize;
 string s;
-int main()
-{
+int main() {
     cin >> s;
     int Last = 0;
-    for (size_t i = 0; i < s.size(); i++)
-    {
+    for (size_t i = 0; i < s.size(); i++) {
         if (s[i] == '0' || s[i] == '1')
             List[ListSize++].Value = s[i];
-        else
-        {
+        else {
             OperatorStack.push(s[i]);
         }
     }

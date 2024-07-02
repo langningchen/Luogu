@@ -2,15 +2,12 @@
 using namespace std;
 typedef long long ll;
 ll Money, Save;
-int main()
-{
-    for (int i = 0; i < 12; i++)
-    {
+int main() {
+    for (int i = 0; i < 12; i++) {
         ll Use;
         cin >> Use;
         Money += 300;
-        if (Use > Money)
-        {
+        if (Use > Money) {
             cout << -i - 1 << endl;
             return 0;
         }

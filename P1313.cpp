@@ -3,8 +3,7 @@ using namespace std;
 typedef long long ll;
 const ll MOD = 10007;
 ll a, b, k, n, m;
-int main()
-{
+int main() {
     cin >> a >> b >> k >> n >> m;
     ll ans = 1;
     for (int i = 1; i <= n; i++)

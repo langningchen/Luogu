@@ -2,8 +2,7 @@
 using namespace std;
 int n;
 double ans;
-int main()
-{
+int main() {
     cin >> n;
     for (int i = 1; i <= n; i++)
         ans += (i % 2 ? 1.0 : -1.0) / i;

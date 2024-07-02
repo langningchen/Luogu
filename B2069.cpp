@@ -4,11 +4,9 @@ typedef long long ll;
 typedef long double ld;
 ll n, p = 1, q = 2;
 ld ans;
-int main()
-{
+int main() {
     cin >> n;
-    for (int i = 0; i < n; i++)
-    {
+    for (int i = 0; i < n; i++) {
         ans += q * 1.0 / p;
         q = q + p;
         p = q - p;

@@ -2,11 +2,9 @@
 using namespace std;
 typedef long long ll;
 ll k, ans1, ans2, ans3;
-int main()
-{
+int main() {
     cin >> k;
-    for (int i = 0; i < k; i++)
-    {
+    for (int i = 0; i < k; i++) {
         ll t;
         cin >> t;
         if (t == 1)

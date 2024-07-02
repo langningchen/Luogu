@@ -3,8 +3,7 @@ using namespace std;
 typedef long long ll;
 int n;
 ll ans;
-bool Related7(int x)
-{
+bool Related7(int x) {
     if (x % 7 == 0)
         return true;
     string tmp = to_string(x);
@@ -12,8 +11,7 @@ bool Related7(int x)
         return true;
     return false;
 }
-int main()
-{
+int main() {
     cin >> n;
     for (int i = 1; i <= n; i++)
         if (!Related7(i))
