@@ -2,74 +2,57 @@
 using namespace std;
 typedef long long ll;
 const int N = 100005;
-struct SEGMENT {
-    ll Left;
-    ll Right;
-    ll Length;
-    ll Sum;
-    ll LazyTag;
-};
-SEGMENT SegmentTree[N * 4];
-int n, m, InitialValue[N];
-void Build(ll NowPos, ll Left, ll Right) {
-    SegmentTree[NowPos].Left = Left;
-    SegmentTree[NowPos].Right = Right;
-    SegmentTree[NowPos].Length = Right - Left + 1;
-    SegmentTree[NowPos].LazyTag = 0;
-    if (Left == Right) {
-        SegmentTree[NowPos].Sum = InitialValue[Left];
+
+ll n, m, init[N];
+
+#define ls (u << 1)
+#define rs (u << 1 | 1)
+#define len(x) (ri[x] - le[x] + 1)
+ll le[N << 2], ri[N << 2];
+ll sgt[N << 2], lzt[N << 2];
+void pu(ll u) { sgt[u] = sgt[ls] + sgt[rs]; }
+void pd(ll u) {
+    sgt[ls] += len(ls) * lzt[u], lzt[ls] += lzt[u];
+    sgt[rs] += len(rs) * lzt[u], lzt[rs] += lzt[u];
+    lzt[u] = 0;
+}
+void build(ll l = 1, ll r = n, ll u = 1) {
+    le[u] = l, ri[u] = r;
+    if (l == r) {
+        sgt[u] = init[l];
         return;
     }
-    ll Middle = (Left + Right) / 2;
-    Build(NowPos * 2, Left, Middle);
-    Build(NowPos * 2 + 1, Middle + 1, Right);
-    SegmentTree[NowPos].Sum = SegmentTree[NowPos * 2].Sum + SegmentTree[NowPos * 2 + 1].Sum;
+    ll m = l + ((r - l) >> 1);
+    build(l, m, ls), build(m + 1, r, rs), pu(u);
 }
-void PushDown(ll NowPos) {
-    if (SegmentTree[NowPos].Left == SegmentTree[NowPos].Right)
-        return;
-    ll LazyTag = SegmentTree[NowPos].LazyTag;
-    SegmentTree[NowPos].LazyTag = 0;
-    SegmentTree[NowPos * 2].LazyTag += LazyTag;
-    SegmentTree[NowPos * 2].Sum += SegmentTree[NowPos * 2].Length * LazyTag;
-    SegmentTree[NowPos * 2 + 1].LazyTag += LazyTag;
-    SegmentTree[NowPos * 2 + 1].Sum += SegmentTree[NowPos * 2 + 1].Length * LazyTag;
+void add(ll s, ll e, ll v, ll u = 1) {
+    if (e < le[u] || ri[u] < s) return;
+    if (s <= le[u] && ri[u] <= e)
+        sgt[u] += len(u) * v, lzt[u] += v;
+    else
+        pd(u), add(s, e, v, ls), add(s, e, v, rs), pu(u);
 }
-void Add(ll NowPos, ll Left, ll Right, ll Data) {
-    if (Right < SegmentTree[NowPos].Left || SegmentTree[NowPos].Right < Left)
-        return;
-    if (Left <= SegmentTree[NowPos].Left && SegmentTree[NowPos].Right <= Right) {
-        SegmentTree[NowPos].LazyTag += Data;
-        SegmentTree[NowPos].Sum += SegmentTree[NowPos].Length * Data;
-        return;
-    }
-    PushDown(NowPos);
-    Add(NowPos * 2, Left, Right, Data);
-    Add(NowPos * 2 + 1, Left, Right, Data);
-    SegmentTree[NowPos].Sum = SegmentTree[NowPos * 2].Sum + SegmentTree[NowPos * 2 + 1].Sum;
+ll query(ll s, ll e, ll u = 1) {
+    if (e < le[u] || ri[u] < s) return 0;
+    if (s <= le[u] && ri[u] <= e) return sgt[u];
+    pd(u);
+    return query(s, e, ls) + query(s, e, rs);
 }
-ll Query(ll NowPos, ll Left, ll Right) {
-    if (Right < SegmentTree[NowPos].Left || SegmentTree[NowPos].Right < Left)
-        return 0;
-    if (Left <= SegmentTree[NowPos].Left && SegmentTree[NowPos].Right <= Right)
-        return SegmentTree[NowPos].Sum;
-    PushDown(NowPos);
-    return Query(NowPos * 2, Left, Right) + Query(NowPos * 2 + 1, Left, Right);
-}
+
 int main() {
     cin >> n >> m;
     for (ll i = 1; i <= n; i++)
-        cin >> InitialValue[i];
-    Build(1, 1, n);
+        cin >> init[i];
+    build();
     for (ll i = 1; i <= m; i++) {
         ll t, l, r;
         cin >> t >> l >> r;
         if (t == 1) {
             int k;
             cin >> k;
-            Add(1, l, r, k);
+            add(l, r, k);
         } else
-            cout << Query(1, l, r) << endl;
+            cout << query(l, r) << endl;
     }
     return 0;
 }
