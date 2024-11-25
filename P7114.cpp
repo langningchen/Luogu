@@ -6,39 +6,51 @@ using namespace std;
 typedef long long ll;
 ll T;
 template <typename T>
-class BIT {
-  private:
+class BIT
+{
+private:
     vector<T> Tree;
-    ll Lowbit(ll x) {
+    ll Lowbit(ll x)
+    {
         return x & -x;
     }
 
-  public:
-    BIT(ll n) {
+public:
+    BIT(ll n)
+    {
         Tree.resize(n + 1);
     }
-    void Update(ll x, T v) {
-        while (x < Tree.size()) {
+    void Update(ll x, T v)
+    {
+        while (x < Tree.size())
+        {
             Tree[x] += v;
             x += Lowbit(x);
         }
     }
-    T Query(ll x) {
+    T Query(ll x)
+    {
         T res = 0;
-        while (x > 0) {
+        while (x > 0)
+        {
             res += Tree[x];
             x -= Lowbit(x);
         }
         return res;
     }
 };
-vector<int> z_function(string s) {
+vector<int> z_function(string s)
+{
     int n = (int)s.length();
     vector<int> z(n);
-    for (int i = 1, l = 0, r = 0; i < n; ++i) {
-        if (i <= r && z[i - l] < r - i + 1) {
+    for (int i = 1, l = 0, r = 0; i < n; ++i)
+    {
+        if (i <= r && z[i - l] < r - i + 1)
+        {
             z[i] = z[i - l];
-        } else {
+        }
+        else
+        {
             z[i] = max(0, r - i + 1);
             while (i + z[i] < n && s[z[i]] == s[i + z[i]])
                 ++z[i];
@@ -49,31 +61,36 @@ vector<int> z_function(string s) {
     return z;
 }
 
-int main() {
-    // freopen("string.in", "r", stdin);
-    // freopen("string.out", "w", stdout);
+int main()
+{
+    // ignore = freopen("string.in", "r", stdin);
+    // ignore = freopen("string.out", "w", stdout);
     cin >> T;
-    while (T-- > 0) {
+    while (T-- > 0)
+    {
         string S;
         cin >> S;
         ll Answer = 0;
         ll n = S.size();
         vector<int> z = z_function(S);
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++)
+        {
             if (i + z[i] == n)
                 z[i]--;
         }
         vector<int> before(26, 0), after(26, 0);
         vector<int> c(30, 0);
         ll pre = 0, suf = 0, all = 0;
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++)
+        {
             after[S[i] - 'a']++;
         }
         for (int i = 0; i < 26; i++)
             if (after[i] & 1)
                 all++;
         suf = all;
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++)
+        {
             if (after[S[i] - 'a'] & 1)
                 suf--;
             else
@@ -84,7 +101,8 @@ int main() {
             else
                 pre++;
             before[S[i] - 'a']++;
-            if (i != 0 && i != n - 1) {
+            if (i != 0 && i != n - 1)
+            {
                 int t = z[i + 1] / (i + 1) + 1;
                 Answer += 1LL * (t / 2) * c[all + 1] + 1LL * (t - t / 2) * c[suf + 1];
             }
