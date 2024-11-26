@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-const int N = 1e5 + 5;
+const int N = 1e6 + 5;
 const int K = 26;
 int n, m;
 
@@ -13,12 +13,8 @@ void add(string s, int i)
         int u = s[i] - 'a';
         if (!son[p][u])
         {
-            // sonCnt[p]++;
-            // oneSon[p] = u;
-            if (tab[p])
-                tab[p] = -1;
-            else if (!tab[p])
-                tab[p] = u;
+            sonCnt[p]++;
+            oneSon[p] = u;
             son[p][u] = ++cnt;
             fa[cnt] = p;
         }
@@ -26,12 +22,11 @@ void add(string s, int i)
     }
     idx[p] = i;
 }
-
 int getTab(int x)
 {
     if (sonCnt[x] != 1 || idx[x] != 0)
         return x;
-    if (tab[x])
+    if (tab[x] != -1)
         return tab[x];
     return tab[x] = getTab(son[x][oneSon[x]]);
 }
@@ -45,6 +40,7 @@ int main()
         cin >> t;
         add(t, i);
     }
+    fill(tab, tab + N, -1);
     string p;
     cin >> p;
     int cur = 0, more = 0;
