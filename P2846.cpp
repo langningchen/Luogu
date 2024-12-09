@@ -1,9 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
-typedef long long ll;
-const ll N = 1e5 + 5;
+const int N = 100005;
 
-ll n, m;
+int n, m;
 
 class SEGMENT_TREE
 {
@@ -11,15 +10,15 @@ private:
     class SEGMENT
     {
     public:
-        ll Left, Right, Open, Close;
+        int Left, Right, Open, Close;
         bool LazyTag;
         SEGMENT() : Left(0), Right(0), Open(0), Close(0), LazyTag(false) {}
     } Segments[N * 4];
 
-    inline ll GetLeft(ll x) { return (x << 1); }
-    inline ll GetRight(ll x) { return (x << 1 | 1); }
-    inline ll GetMid(ll x, ll y) { return x + ((y - x) >> 1); }
-    void PushDown(ll ID)
+    inline int GetLeft(int x) { return (x << 1); }
+    inline int GetRight(int x) { return (x << 1 | 1); }
+    inline int GetMid(int x, int y) { return x + ((y - x) >> 1); }
+    void PushDown(int ID)
     {
         if (Segments[ID].LazyTag)
         {
@@ -30,19 +29,19 @@ private:
             Segments[ID].LazyTag = false;
         }
     }
-    void Build(ll ID, ll Left, ll Right)
+    void Build(int ID, int Left, int Right)
     {
         Segments[ID].Left = Left;
         Segments[ID].Right = Right;
         Segments[ID].Close = Right - Left + 1;
         if (Left != Right)
         {
-            ll Mid = GetMid(Left, Right);
+            int Mid = GetMid(Left, Right);
             Build(GetLeft(ID), Left, Mid);
             Build(GetRight(ID), Mid + 1, Right);
         }
     }
-    void Modify(ll ID, ll Left, ll Right)
+    void Modify(int ID, int Left, int Right)
     {
         if (Left > Segments[ID].Right || Right < Segments[ID].Left)
         {
@@ -60,7 +59,7 @@ private:
         Segments[ID].Open = Segments[GetLeft(ID)].Open + Segments[GetRight(ID)].Open;
         Segments[ID].Close = Segments[GetLeft(ID)].Close + Segments[GetRight(ID)].Close;
     }
-    ll Query(ll ID, ll Left, ll Right)
+    int Query(int ID, int Left, int Right)
     {
         if (Left > Segments[ID].Right || Right < Segments[ID].Left)
         {
@@ -71,22 +70,22 @@ private:
             return Segments[ID].Open;
         }
         PushDown(ID);
-        ll Answer = 0;
+        int Answer = 0;
         Answer += Query(GetLeft(ID), Left, Right);
         Answer += Query(GetRight(ID), Left, Right);
         return Answer;
     }
 
 public:
-    void Build(ll NodeCount)
+    void Build(int NodeCount)
     {
         Build(1, 1, NodeCount);
     }
-    void Modify(ll Left, ll Right)
+    void Modify(int Left, int Right)
     {
         Modify(1, Left, Right);
     }
-    ll Query(ll Left, ll Right)
+    int Query(int Left, int Right)
     {
         return Query(1, Left, Right);
     }
@@ -98,7 +97,7 @@ int main()
     SegmentTree.Build(n);
     for (int i = 1; i <= m; i++)
     {
-        ll c, a, b;
+        int c, a, b;
         cin >> c >> a >> b;
         if (c == 0)
             SegmentTree.Modify(a, b);
