@@ -1,9 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-const int N = 100005;
+const ll N = 1e5 + 5;
 
-ll n, m, init[N];
+ll n, m, a[N];
 
 #define ls (u << 1)
 #define rs (u << 1 | 1)
@@ -20,10 +20,10 @@ void pd(ll u)
 }
 void build(ll l = 1, ll r = n, ll u = 1)
 {
-    le[u] = l, ri[u] = r;
+    le[u] = l, ri[u] = r, lzt[u] = 0;
     if (l == r)
     {
-        sgt[u] = init[l];
+        sgt[u] = a[l];
         return;
     }
     ll m = mid(l, r);
@@ -47,19 +47,6 @@ ll query(ll s, ll e, ll u = 1)
     pd(u);
     return query(s, e, ls) + query(s, e, rs);
 }
-void addOne(ll s, ll v, ll u = 1)
-{
-    if (le[u] == ri[u])
-        sgt[u] += v;
-    else
-        addOne(s, v, s <= mid(le[u], ri[u] ? ls : rs)), pu(u);
-}
-ll queryOne(ll s, ll u = 1)
-{
-    if (le[u] == ri[u])
-        return sgt[u];
-    return s <= mid(le[u], ri[u]) ? queryOne(s, ls) : queryOne(s, rs);
-}
 void print(ll u = 1)
 {
     if (le[u] == ri[u])
@@ -71,21 +58,35 @@ void print(ll u = 1)
 int main()
 {
     cin >> n >> m;
-    for (ll i = 1; i <= n; i++)
-        cin >> init[i];
+    for (ll i = 1, lst = 0, cur; i <= n; i++)
+    {
+        cin >> cur;
+        a[i] = cur - lst;
+        lst = cur;
+    }
     build();
+    // print();
     for (ll i = 1; i <= m; i++)
     {
-        ll t, l, r;
-        cin >> t >> l >> r;
-        if (t == 1)
+        ll opt;
+        cin >> opt;
+        if (opt == 1)
         {
-            int k;
-            cin >> k;
-            add(l, r, k);
+            ll l, r, k, d;
+            cin >> l >> r >> k >> d;
+            add(l, l, k);
+            if (l + 1 <= r)
+                add(l + 1, r, d);
+            if (r + 1 <= n)
+                add(r + 1, r + 1, -(k + d * (r - l)));
         }
         else
-            cout << query(l, r) << endl;
+        {
+            ll p;
+            cin >> p;
+            cout << query(1, p) << endl;
+        }
+        // print();
     }
     return 0;
 }
